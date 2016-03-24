@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Xabbuh\\XApi\\DataFixtures\\": ""
+            "Xabbuh\\XApi\\DataFixtures\\": "src/"
         }
     },
     "extra": {
