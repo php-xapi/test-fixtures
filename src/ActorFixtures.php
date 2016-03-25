@@ -14,6 +14,7 @@ namespace Xabbuh\XApi\DataFixtures;
 use Xabbuh\XApi\Model\Account;
 use Xabbuh\XApi\Model\Agent;
 use Xabbuh\XApi\Model\Group;
+use Xabbuh\XApi\Model\InverseFunctionalIdentifier;
 
 /**
  * Actor fixtures.
@@ -29,7 +30,7 @@ class ActorFixtures
      */
     public static function getAgent()
     {
-        $agent = new Agent('mailto:christian@example.com', null, null, null, 'Christian');
+        $agent = new Agent(InverseFunctionalIdentifier::withMbox('mailto:christian@example.com'), 'Christian');
 
         return $agent;
     }
@@ -55,7 +56,7 @@ class ActorFixtures
     {
         $account = new Account('GroupAccount', 'http://example.com/homePage');
 
-        return new Group(null, null, null, $account, 'Example Group');
+        return new Group(InverseFunctionalIdentifier::withAccount($account), 'Example Group');
     }
 
     /**
@@ -71,9 +72,9 @@ class ActorFixtures
     private static function createGroup($name, Account $account = null)
     {
         $memberAccount = new Account('Member of a group', 'http://example.com/account');
-        $agent1 = new Agent('mailto:andrew@example.com', null, null, $memberAccount, 'Andrew Downes');
-        $agent2 = new Agent(null, null, 'aaron.openid.example.org', null, 'Aaron Silvers');
-        $group = new Group(null, null, null, $account, $name, array($agent1, $agent2));
+        $agent1 = new Agent(InverseFunctionalIdentifier::withAccount($memberAccount), 'Andrew Downes');
+        $agent2 = new Agent(InverseFunctionalIdentifier::withOpenId('aaron.openid.example.org'), 'Aaron Silvers');
+        $group = new Group(null !== $account ? InverseFunctionalIdentifier::withAccount($account) : null, $name, array($agent1, $agent2));
 
         return $group;
     }

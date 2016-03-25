@@ -12,6 +12,7 @@
 namespace Xabbuh\XApi\DataFixtures;
 
 use Xabbuh\XApi\Model\Agent;
+use Xabbuh\XApi\Model\InverseFunctionalIdentifier;
 use Xabbuh\XApi\Model\Statement;
 use Xabbuh\XApi\Model\StatementResult;
 use Xabbuh\XApi\Model\Verb;
@@ -37,7 +38,7 @@ class StatementResultFixtures
         $verb = new Verb('http://adlnet.gov/expapi/verbs/deleted', array('en-US' => 'deleted'));
         $statement2 = new Statement(
             '12345678-1234-5678-8234-567812345679',
-            new Agent('mailto:bob@example.com'),
+            new Agent(InverseFunctionalIdentifier::withMbox('mailto:bob@example.com')),
             $verb,
             $statement1->getObject()
         );
