@@ -11,42 +11,38 @@
 
 namespace Xabbuh\XApi\DataFixtures;
 
-use Xabbuh\XApi\Model\Account;
 use Xabbuh\XApi\Model\Agent;
 use Xabbuh\XApi\Model\Activity;
 use Xabbuh\XApi\Model\Definition;
-use Xabbuh\XApi\Model\Group;
 use Xabbuh\XApi\Model\InverseFunctionalIdentifier;
-use Xabbuh\XApi\Model\Result;
-use Xabbuh\XApi\Model\Score;
 use Xabbuh\XApi\Model\Statement;
 use Xabbuh\XApi\Model\StatementReference;
 use Xabbuh\XApi\Model\SubStatement;
 use Xabbuh\XApi\Model\Verb;
 
 /**
- * Statement fixtures.
+ * xAPI statement fixtures.
  *
- * @author Christian Flothmann <christian.flothmann@xabbuh.de>
+ * These fixtures are borrowed from the
+ * {@link https://github.com/adlnet/xAPI_LRS_Test Experience API Learning Record Store Conformance Test} package.
  */
 class StatementFixtures
 {
     const DEFAULT_STATEMENT_ID = '12345678-1234-5678-8234-567812345678';
 
-    /**
-     * Loads a minimal valid statement.
-     *
-     * @param string $id The id of the new Statement
-     *
-     * @return Statement
-     */
     public static function getMinimalStatement($id = self::DEFAULT_STATEMENT_ID)
     {
-        $actor = new Agent(InverseFunctionalIdentifier::withMbox('mailto:xapi@adlnet.gov'));
-        $verb = new Verb('http://adlnet.gov/expapi/verbs/created', array('en-US' => 'created'));
-        $activity = new Activity('http://example.adlnet.gov/xapi/example/activity');
+        return new Statement($id, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
+    }
 
-        return new Statement($id, $actor, $verb, $activity);
+    public static function getTypicalStatement()
+    {
+        return new Statement(UuidFixtures::getUniqueUuid(), ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
+    }
+
+    public static function getVoidingStatement($voidedStatementId = 'e05aa883-acaf-40ad-bf54-02c8ce485fb0')
+    {
+        return new Statement(UuidFixtures::getUniqueUuid(), ActorFixtures::getTypicalAgent(), VerbFixtures::getVoidingVerb(), new StatementReference($voidedStatementId));
     }
 
     /**
@@ -58,9 +54,9 @@ class StatementFixtures
      */
     public static function getStatementWithGroupActor($id = self::DEFAULT_STATEMENT_ID)
     {
-        $group = ActorFixtures::getGroup();
-        $verb = VerbFixtures::getVerb();
-        $activity = ActivityFixtures::getActivity();
+        $group = ActorFixtures::getTypicalGroup();
+        $verb = VerbFixtures::getTypicalVerb();
+        $activity = ActivityFixtures::getTypicalActivity();
 
         return new Statement($id, $group, $verb, $activity);
     }
@@ -74,9 +70,9 @@ class StatementFixtures
      */
     public static function getStatementWithGroupActorWithoutMembers($id = self::DEFAULT_STATEMENT_ID)
     {
-        $group = ActorFixtures::getGroupWithoutMembers();
-        $verb = VerbFixtures::getVerb();
-        $activity = ActivityFixtures::getActivity();
+        $group = ActorFixtures::getTypicalGroup();
+        $verb = VerbFixtures::getTypicalVerb();
+        $activity = ActivityFixtures::getTypicalActivity();
 
         return new Statement($id, $group, $verb, $activity);
     }
@@ -109,13 +105,7 @@ class StatementFixtures
      */
     public static function getStatementWithResult($id = self::DEFAULT_STATEMENT_ID)
     {
-        $actor = new Agent(InverseFunctionalIdentifier::withMbox('mailto:xapi@adlnet.gov'));
-        $verb = new Verb('http://adlnet.gov/expapi/verbs/created', array('en-US' => 'created'));
-        $activity = new Activity('http://example.adlnet.gov/xapi/example/activity');
-        $score = new Score(0.95, 31, 0, 50);
-        $result = new Result($score, true, true, 'Wow, nice work!', 'PT1H0M0S');
-
-        return new Statement($id, $actor, $verb, $activity, $result);
+        return new Statement($id, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity(), ResultFixtures::getScoreAndDurationResult());
     }
 
     /**
@@ -152,12 +142,7 @@ class StatementFixtures
      */
     public static function getStatementWithAgentAuthority($id = self::DEFAULT_STATEMENT_ID)
     {
-        $actor = new Agent(InverseFunctionalIdentifier::withMbox('mailto:xapi@adlnet.gov'));
-        $verb = new Verb('http://adlnet.gov/expapi/verbs/created', array('en-US' => 'created'));
-        $activity = new Activity('http://example.adlnet.gov/xapi/example/activity');
-        $authority = new Agent(InverseFunctionalIdentifier::withAccount(new Account('anonymous', 'http://cloud.scorm.com/')));
-
-        return new Statement($id, $actor, $verb, $activity, null, $authority);
+        return new Statement($id, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity(), null, ActorFixtures::getAccountAgent());
     }
 
     /**
@@ -169,29 +154,17 @@ class StatementFixtures
      */
     public static function getStatementWithGroupAuthority($id = self::DEFAULT_STATEMENT_ID)
     {
-        $actor = new Agent(InverseFunctionalIdentifier::withMbox('mailto:xapi@adlnet.gov'));
-        $verb = new Verb('http://adlnet.gov/expapi/verbs/created', array('en-US' => 'created'));
-        $activity = new Activity('http://example.adlnet.gov/xapi/example/activity');
-        $user = new Agent(InverseFunctionalIdentifier::withAccount(new Account('oauth_consumer_x75db', 'http://example.com/xAPI/OAuth/Token')));
-        $application = new Agent(InverseFunctionalIdentifier::withMbox('mailto:bob@example.com'));
-        $authority = new Group(null, null, array($user, $application));
-
-        return new Statement($id, $actor, $verb, $activity, null, $authority);
+        return new Statement($id, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity(), null, ActorFixtures::getTypicalGroup());
     }
 
     /**
-     * Loads a void statement.
-     *
-     * @param string $id The id of the new Statement
-     *
-     * @return Statement
+     * @return Statement[]
      */
-    public static function getVoidStatement($id = self::DEFAULT_STATEMENT_ID)
+    public static function getStatementCollection()
     {
-        $actor = new Agent(InverseFunctionalIdentifier::withMbox('mailto:xapi@adlnet.gov'));
-        $verb = Verb::createVoidVerb();
-        $object = new StatementReference('e05aa883-acaf-40ad-bf54-02c8ce485fb0');
-
-        return new Statement($id, $actor, $verb, $object);
+        return array(
+            self::getMinimalStatement('12345678-1234-5678-8234-567812345678'),
+            self::getMinimalStatement('12345678-1234-5678-8234-567812345679'),
+        );
     }
 }

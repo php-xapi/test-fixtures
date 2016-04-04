@@ -17,65 +17,130 @@ use Xabbuh\XApi\Model\Group;
 use Xabbuh\XApi\Model\InverseFunctionalIdentifier;
 
 /**
- * Actor fixtures.
+ * xAPI actor fixtures.
  *
- * @author Christian Flothmann <christian.flothmann@xabbuh.de>
+ * These fixtures are borrowed from the
+ * {@link https://github.com/adlnet/xAPI_LRS_Test Experience API Learning Record Store Conformance Test} package.
  */
 class ActorFixtures
 {
-    /**
-     * Loads an agent.
-     *
-     * @return Agent
-     */
-    public static function getAgent()
+    public static function getTypicalAgent()
     {
-        $agent = new Agent(InverseFunctionalIdentifier::withMbox('mailto:christian@example.com'), 'Christian');
-
-        return $agent;
+        return new Agent(InverseFunctionalIdentifier::withMbox('mailto:conformancetest@tincanapi.com'));
     }
 
-    /**
-     * Loads a group.
-     *
-     * @return Group
-     */
-    public static function getGroup()
+    public static function getMboxAgent()
     {
-        $account = new Account('GroupAccount', 'http://example.com/homePage');
-
-        return static::createGroup('Example Group', $account);
+        return new Agent(InverseFunctionalIdentifier::withMbox('mailto:conformancetest@tincanapi.com'));
     }
 
-    /**
-     * Loads a group that has no members.
-     *
-     * @return Group
-     */
-    public static function getGroupWithoutMembers()
+    public static function getMboxSha1SumAgent()
     {
-        $account = new Account('GroupAccount', 'http://example.com/homePage');
-
-        return new Group(InverseFunctionalIdentifier::withAccount($account), 'Example Group');
+        return new Agent(InverseFunctionalIdentifier::withMboxSha1Sum('db77b9104b531ecbb0b967f6942549d0ba80fda1'));
     }
 
-    /**
-     * Loads an anonymous group.
-     *
-     * @return Group
-     */
-    public static function getAnonymousGroup()
+    public static function getOpenIdAgent()
     {
-        return static::createGroup('Anonymous Group');
+        return new Agent(InverseFunctionalIdentifier::withOpenId('http://openid.tincanapi.com'));
     }
 
-    private static function createGroup($name, Account $account = null)
+    public static function getAccountAgent()
     {
-        $memberAccount = new Account('Member of a group', 'http://example.com/account');
-        $agent1 = new Agent(InverseFunctionalIdentifier::withAccount($memberAccount), 'Andrew Downes');
-        $agent2 = new Agent(InverseFunctionalIdentifier::withOpenId('aaron.openid.example.org'), 'Aaron Silvers');
-        $group = new Group(null !== $account ? InverseFunctionalIdentifier::withAccount($account) : null, $name, array($agent1, $agent2));
+        return new Agent(InverseFunctionalIdentifier::withAccount(AccountFixtures::getTypicalAccount()));
+    }
 
-        return $group;
+    public static function getTypicalGroup()
+    {
+        return new Group(InverseFunctionalIdentifier::withMbox('mailto:conformancetest-group@tincanapi.com'));
+    }
+
+    public static function getMboxGroup()
+    {
+        return new Group(InverseFunctionalIdentifier::withMbox('mailto:conformancetest-group@tincanapi.com'));
+    }
+
+    public static function getMboxSha1SumGroup()
+    {
+        return new Group(InverseFunctionalIdentifier::withMboxSha1Sum('4e271041e78101311fb37284ef1a1d35c3f1db35'));
+    }
+
+    public static function getOpenIdGroup()
+    {
+        return new Group(InverseFunctionalIdentifier::withOpenId('http://group.openid.tincanapi.com'));
+    }
+
+    public static function getAccountGroup()
+    {
+        return new Group(InverseFunctionalIdentifier::withAccount(AccountFixtures::getTypicalAccount()));
+    }
+
+    public static function getMboxAndNameGroup()
+    {
+        return new Group(InverseFunctionalIdentifier::withMbox('mailto:conformancetest-group@tincanapi.com'), 'test group');
+    }
+
+    public static function getMboxSha1SumAndNameGroup()
+    {
+        return new Group(InverseFunctionalIdentifier::withMboxSha1Sum('4e271041e78101311fb37284ef1a1d35c3f1db35'), 'test group');
+    }
+
+    public static function getOpenIdAndNameGroup()
+    {
+        return new Group(InverseFunctionalIdentifier::withOpenId('http://group.openid.tincanapi.com'), 'test group');
+    }
+
+    public static function getAccountAndNameGroup()
+    {
+        return new Group(InverseFunctionalIdentifier::withAccount(AccountFixtures::getTypicalAccount()), 'test group');
+    }
+
+    public static function getMboxAndMemberGroup()
+    {
+        return new Group(InverseFunctionalIdentifier::withMbox('mailto:conformancetest-group@tincanapi.com'), null, array(self::getTypicalAgent()));
+    }
+
+    public static function getMboxSha1SumAndMemberGroup()
+    {
+        return new Group(InverseFunctionalIdentifier::withMboxSha1Sum('4e271041e78101311fb37284ef1a1d35c3f1db35'), null, array(self::getTypicalAgent()));
+    }
+
+    public static function getOpenIdAndMemberGroup()
+    {
+        return new Group(InverseFunctionalIdentifier::withOpenId('http://group.openid.tincanapi.com'), null, array(self::getTypicalAgent()));
+    }
+
+    public static function getAccountAndMemberGroup()
+    {
+        return new Group(InverseFunctionalIdentifier::withAccount(AccountFixtures::getTypicalAccount()), null, array(self::getTypicalAgent()));
+    }
+
+    public static function getAllPropertiesAndTypicalAgentMemberGroup()
+    {
+        return new Group(InverseFunctionalIdentifier::withMbox('mailto:conformancetest-group@tincanapi.com'), 'test group', array(self::getTypicalAgent()));
+    }
+
+    public static function getAllPropertiesAndMboxAgentMemberGroup()
+    {
+        return new Group(InverseFunctionalIdentifier::withMbox('mailto:conformancetest-group@tincanapi.com'), 'test group', array(self::getMboxAgent()));
+    }
+
+    public static function getAllPropertiesAndMboxSha1SumAgentMemberGroup()
+    {
+        return new Group(InverseFunctionalIdentifier::withMbox('mailto:conformancetest-group@tincanapi.com'), 'test group', array(self::getMboxSha1SumAgent()));
+    }
+
+    public static function getAllPropertiesAndOpenIdAgentMemberGroup()
+    {
+        return new Group(InverseFunctionalIdentifier::withMbox('mailto:conformancetest-group@tincanapi.com'), 'test group', array(self::getOpenIdAgent()));
+    }
+
+    public static function getAllPropertiesAndAccountAgentMemberGroup()
+    {
+        return new Group(InverseFunctionalIdentifier::withMbox('mailto:conformancetest-group@tincanapi.com'), 'test group', array(self::getAccountAgent()));
+    }
+
+    public static function getAllPropertiesAndTwoTypicalAgentMembersGroup()
+    {
+        return new Group(InverseFunctionalIdentifier::withMbox('mailto:conformancetest-group@tincanapi.com'), 'test group', array(self::getTypicalAgent(), self::getTypicalAgent()));
     }
 }

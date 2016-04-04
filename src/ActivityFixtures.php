@@ -12,32 +12,32 @@
 namespace Xabbuh\XApi\DataFixtures;
 
 use Xabbuh\XApi\Model\Activity;
-use Xabbuh\XApi\Model\Definition;
 
 /**
- * Activity fixtures.
+ * xAPI statement activity fixtures.
  *
- * @author Christian Flothmann <christian.flothmann@xabbuh.de>
+ * These fixtures are borrowed from the
+ * {@link https://github.com/adlnet/xAPI_LRS_Test Experience API Learning Record Store Conformance Test} package.
  */
 class ActivityFixtures
 {
-    /**
-     * Loads an activity.
-     *
-     * @return Activity
-     */
-    public static function getActivity()
+    public static function getTypicalActivity()
     {
-        $description = array(
-            'en-GB' => 'An example of an activity',
-            'en-US' => 'An example of an activity',
-        );
-        $name = array(
-            'en-GB' => 'example activity',
-            'en-US' => 'example activity',
-        );
-        $definition = new Definition($name, $description, 'http://www.example.co.uk/types/exampleactivitytype');
+        return new Activity('http://tincanapi.com/conformancetest/activityid');
+    }
 
-        return new Activity('http://www.example.co.uk/exampleactivity', $definition);
+    public static function getIdActivity()
+    {
+        return new Activity('http://tincanapi.com/conformancetest/activityid');
+    }
+
+    public static function getIdAndDefinitionActivity()
+    {
+        return new Activity('http://tincanapi.com/conformancetest/activityid', DefinitionFixtures::getTypicalDefinition());
+    }
+
+    public static function getAllPropertiesActivity()
+    {
+        return new Activity('http://tincanapi.com/conformancetest/activityid', DefinitionFixtures::getTypicalDefinition());
     }
 }
