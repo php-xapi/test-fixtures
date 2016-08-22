@@ -45,7 +45,7 @@ class StatementFixtures
             $id = UuidFixtures::getUniqueUuid();
         }
 
-        return new Statement($id, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
+        return new Statement($id, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity(), null, null, new \DateTime('2014-07-23T12:34:02-05:00'));
     }
 
     public static function getVoidingStatement($id = null, $voidedStatementId = 'e05aa883-acaf-40ad-bf54-02c8ce485fb0')

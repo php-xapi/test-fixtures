@@ -1,6 +1,8 @@
 CHANGELOG
 =========
 
+* Added missing `timestamp` value to the typical statement.
+
 * when `null` is passed as the id argument to one of methods of the
   `StatementFixtures` class, a unique UUID will be generated
 
