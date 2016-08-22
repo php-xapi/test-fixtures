@@ -32,17 +32,29 @@ class StatementFixtures
 
     public static function getMinimalStatement($id = self::DEFAULT_STATEMENT_ID)
     {
+        if (null === $id) {
+            $id = UuidFixtures::getUniqueUuid();
+        }
+
         return new Statement($id, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
     }
 
-    public static function getTypicalStatement()
+    public static function getTypicalStatement($id = self::DEFAULT_STATEMENT_ID)
     {
-        return new Statement(UuidFixtures::getUniqueUuid(), ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
+        if (null === $id) {
+            $id = UuidFixtures::getUniqueUuid();
+        }
+
+        return new Statement($id, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
     }
 
-    public static function getVoidingStatement($voidedStatementId = 'e05aa883-acaf-40ad-bf54-02c8ce485fb0')
+    public static function getVoidingStatement($id = null, $voidedStatementId = 'e05aa883-acaf-40ad-bf54-02c8ce485fb0')
     {
-        return new Statement(UuidFixtures::getUniqueUuid(), ActorFixtures::getTypicalAgent(), VerbFixtures::getVoidingVerb(), new StatementReference($voidedStatementId));
+        if (null === $id) {
+            $id = UuidFixtures::getUniqueUuid();
+        }
+
+        return new Statement($id, ActorFixtures::getTypicalAgent(), VerbFixtures::getVoidingVerb(), new StatementReference($voidedStatementId));
     }
 
     /**
@@ -54,6 +66,10 @@ class StatementFixtures
      */
     public static function getStatementWithGroupActor($id = self::DEFAULT_STATEMENT_ID)
     {
+        if (null === $id) {
+            $id = UuidFixtures::getUniqueUuid();
+        }
+
         $group = ActorFixtures::getTypicalGroup();
         $verb = VerbFixtures::getTypicalVerb();
         $activity = ActivityFixtures::getTypicalActivity();
@@ -70,6 +86,10 @@ class StatementFixtures
      */
     public static function getStatementWithGroupActorWithoutMembers($id = self::DEFAULT_STATEMENT_ID)
     {
+        if (null === $id) {
+            $id = UuidFixtures::getUniqueUuid();
+        }
+
         $group = ActorFixtures::getTypicalGroup();
         $verb = VerbFixtures::getTypicalVerb();
         $activity = ActivityFixtures::getTypicalActivity();
@@ -105,6 +125,10 @@ class StatementFixtures
      */
     public static function getStatementWithResult($id = self::DEFAULT_STATEMENT_ID)
     {
+        if (null === $id) {
+            $id = UuidFixtures::getUniqueUuid();
+        }
+
         return new Statement($id, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity(), ResultFixtures::getScoreAndDurationResult());
     }
 
@@ -117,6 +141,10 @@ class StatementFixtures
      */
     public static function getStatementWithSubStatement($id = self::DEFAULT_STATEMENT_ID)
     {
+        if (null === $id) {
+            $id = UuidFixtures::getUniqueUuid();
+        }
+
         $actor = new Agent(InverseFunctionalIdentifier::withMbox('mailto:test@example.com'));
         $verb = new Verb('http://example.com/visited', array('en-US' => 'will visit'));
         $definition = new Definition(
@@ -142,6 +170,10 @@ class StatementFixtures
      */
     public static function getStatementWithAgentAuthority($id = self::DEFAULT_STATEMENT_ID)
     {
+        if (null === $id) {
+            $id = UuidFixtures::getUniqueUuid();
+        }
+
         return new Statement($id, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity(), null, ActorFixtures::getAccountAgent());
     }
 
@@ -154,6 +186,10 @@ class StatementFixtures
      */
     public static function getStatementWithGroupAuthority($id = self::DEFAULT_STATEMENT_ID)
     {
+        if (null === $id) {
+            $id = UuidFixtures::getUniqueUuid();
+        }
+
         return new Statement($id, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity(), null, ActorFixtures::getTypicalGroup());
     }
 

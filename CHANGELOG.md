@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+* when `null` is passed as the id argument to one of methods of the
+  `StatementFixtures` class, a unique UUID will be generated
+
 0.3.0
 -----
 
