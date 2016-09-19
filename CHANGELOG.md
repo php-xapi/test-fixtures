@@ -1,6 +1,8 @@
 CHANGELOG
 =========
 
+* Added missing fixtures for `Context`, `ContextActivities`, and `Extensions`.
+
 0.4.0
 -----
 

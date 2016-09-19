@@ -125,4 +125,9 @@ class SubStatementFixtures
     {
         return new SubStatement(null, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), StatementReferenceFixtures::getTypicalStatementReference());
     }
+
+    public static function getAllPropertiesSubStatement()
+    {
+        return new SubStatement(null, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity(), ResultFixtures::getTypicalResult(), ContextFixtures::getTypicalContext());
+    }
 }

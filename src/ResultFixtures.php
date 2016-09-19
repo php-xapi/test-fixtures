@@ -21,6 +21,11 @@ use Xabbuh\XApi\Model\Result;
  */
 class ResultFixtures
 {
+    public static function getTypicalResult()
+    {
+        return new Result();
+    }
+
     public static function getScoreResult()
     {
         return new Result(ScoreFixtures::getTypicalScore());
@@ -51,6 +56,16 @@ class ResultFixtures
         return new Result(null, null, null, null, 'PT2H');
     }
 
+    public static function getExtensionsResult()
+    {
+        return new Result(null, null, null, null, null, ExtensionsFixtures::getMultiplePairsExtensions());
+    }
+
+    public static function getEmptyExtensionsResult()
+    {
+        return new Result(null, null, null, null, null, ExtensionsFixtures::getEmptyExtensions());
+    }
+
     public static function getScoreAndSuccessResult()
     {
         return new Result(ScoreFixtures::getTypicalScore(), true);
@@ -69,5 +84,10 @@ class ResultFixtures
     public static function getScoreAndDurationResult()
     {
         return new Result(ScoreFixtures::getTypicalScore(), null, null, null, 'PT2H');
+    }
+
+    public static function getAllPropertiesResult()
+    {
+        return new Result(ScoreFixtures::getTypicalScore(), true, true, 'test', 'PT2H', ExtensionsFixtures::getTypicalExtensions());
     }
 }
