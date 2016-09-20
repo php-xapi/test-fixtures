@@ -1,7 +1,8 @@
 CHANGELOG
 =========
 
-* Added missing fixtures for `Context`, `ContextActivities`, and `Extensions`.
+* Added missing fixtures for `Account`, `Activity`, `Actor`, `Context`,
+  `ContextActivities`, `Extensions`, `Result`, and `Verb`.
 
 0.4.0
 -----
