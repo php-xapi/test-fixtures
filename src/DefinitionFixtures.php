@@ -60,4 +60,9 @@ class DefinitionFixtures
             'https://github.com/adlnet/xAPI_LRS_Test'
         );
     }
+
+    public static function getForQueryDefinition()
+    {
+        return new Definition(array('en-US' => 'for query'));
+    }
 }

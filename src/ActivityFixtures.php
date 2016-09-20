@@ -40,4 +40,9 @@ class ActivityFixtures
     {
         return new Activity('http://tincanapi.com/conformancetest/activityid', DefinitionFixtures::getTypicalDefinition());
     }
+
+    public static function getForQueryActivity()
+    {
+        return new Activity('http://tincanapi.com/conformancetest/activityid/forQuery', DefinitionFixtures::getForQueryDefinition());
+    }
 }

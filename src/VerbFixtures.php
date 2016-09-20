@@ -40,4 +40,9 @@ class VerbFixtures
     {
         return new Verb('http://tincanapi.com/conformancetest/verbid', array('en-US' => 'test'));
     }
+
+    public static function getForQueryVerb()
+    {
+        return new Verb('http://tincanapi.com/conformancetest/verbid/forQuery', array('en-US' => 'for query'));
+    }
 }

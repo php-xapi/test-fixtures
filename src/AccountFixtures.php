@@ -30,4 +30,14 @@ class AccountFixtures
     {
         return new Account('oauth_consumer_x75db', 'https://tincanapi.com/OAuth/Token');
     }
+
+    public static function getAllPropertiesAccount()
+    {
+        return new Account('test', 'https://tincanapi.com');
+    }
+
+    public static function getForQueryAccount()
+    {
+        return new Account('forQuery', 'https://tincanapi.com');
+    }
 }

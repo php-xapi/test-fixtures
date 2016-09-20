@@ -21,6 +21,11 @@ use Xabbuh\XApi\Model\Result;
  */
 class ResultFixtures
 {
+    public static function getEmptyResult()
+    {
+        return new Result();
+    }
+
     public static function getTypicalResult()
     {
         return new Result();
@@ -84,6 +89,101 @@ class ResultFixtures
     public static function getScoreAndDurationResult()
     {
         return new Result(ScoreFixtures::getTypicalScore(), null, null, null, 'PT2H');
+    }
+
+    public static function getSuccessAndCompletionResult()
+    {
+        return new Result(null, true, true);
+    }
+
+    public static function getSuccessAndResponseResult()
+    {
+        return new Result(null, true, null, 'test');
+    }
+
+    public static function getSuccessAndDurationResult()
+    {
+        return new Result(null, true, null, null, 'PT2H');
+    }
+
+    public static function getCompletionAndResponseResult()
+    {
+        return new Result(null, null, true, 'test');
+    }
+
+    public static function getCompletionAndDurationResult()
+    {
+        return new Result(null, null, true, null, 'PT2H');
+    }
+
+    public static function getResponseAndDurationResult()
+    {
+        return new Result(null, null, null, 'test', 'PT2H');
+    }
+
+    public static function getScoreSuccessAndCompletionResult()
+    {
+        return new Result(ScoreFixtures::getTypicalScore(), true, true);
+    }
+
+    public static function getScoreSuccessAndResponseResult()
+    {
+        return new Result(ScoreFixtures::getTypicalScore(), true, null, 'test');
+    }
+
+    public static function getScoreSuccessAndDurationResult()
+    {
+        return new Result(ScoreFixtures::getTypicalScore(), true, null, null, 'PT2H');
+    }
+
+    public static function getScoreCompletionAndResponseResult()
+    {
+        return new Result(ScoreFixtures::getTypicalScore(), null, true, 'test');
+    }
+
+    public static function getScoreCompletionAndDurationResult()
+    {
+        return new Result(ScoreFixtures::getTypicalScore(), null, true, null, 'PT2H');
+    }
+
+    public static function getScoreResponseAndDurationResult()
+    {
+        return new Result(ScoreFixtures::getTypicalScore(), null, null, 'test', 'PT2H');
+    }
+
+    public static function getSuccessCompletionAndResponseResult()
+    {
+        return new Result(null, true, true, 'test');
+    }
+
+    public static function getSuccessCompletionAndDurationResult()
+    {
+        return new Result(null, true, true, null, 'PT2H');
+    }
+
+    public static function getSuccessResponseAndDurationResult()
+    {
+        return new Result(null, true, null, 'test', 'PT2H');
+    }
+
+    public static function getCompletionResponseAndDurationResult()
+    {
+        return new Result(null, null, true, 'test', 'PT2H');
+    }
+
+    public static function getScoreSuccessCompletionAndResponseResult()
+    {
+        return new Result(ScoreFixtures::getTypicalScore(), true, true, 'test');
+    }
+
+    public static function getScoreSuccessCompletionAndDurationResult()
+    {
+        return new Result(ScoreFixtures::getTypicalScore(), true, true, null, 'PT2H');
+    }
+
+    public static function getSuccessCompletionResponseAndDurationResult()
+    {
+        return new Result(null, true, true, 'test', 'PT2H');
     }
 
     public static function getAllPropertiesResult()

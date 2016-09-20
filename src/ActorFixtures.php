@@ -49,6 +49,26 @@ class ActorFixtures
         return new Agent(InverseFunctionalIdentifier::withAccount(AccountFixtures::getTypicalAccount()));
     }
 
+    public static function getForQueryMboxAgent()
+    {
+        return new Agent(InverseFunctionalIdentifier::withMbox('mailto:conformancetest+query@tincanapi.com'));
+    }
+
+    public static function getForQueryMboxSha1SumAgent()
+    {
+        return new Agent(InverseFunctionalIdentifier::withMboxSha1Sum('6954e807cfbfc5b375d185de32f05de269f93d6f'));
+    }
+
+    public static function getForQueryOpenIdAgent()
+    {
+        return new Agent(InverseFunctionalIdentifier::withOpenId('http://openid.tincanapi.com/query'));
+    }
+
+    public static function getForQueryAccountAgent()
+    {
+        return new Agent(InverseFunctionalIdentifier::withAccount(AccountFixtures::getForQueryAccount()));
+    }
+
     public static function getTypicalGroup()
     {
         return new Group(InverseFunctionalIdentifier::withMbox('mailto:conformancetest-group@tincanapi.com'));
