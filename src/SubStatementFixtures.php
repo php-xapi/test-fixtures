@@ -23,111 +23,111 @@ class SubStatementFixtures
 {
     public static function getTypicalSubStatement()
     {
-        return new SubStatement(null, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
+        return new SubStatement(ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
     }
 
     public static function getSubStatementWithMboxAgent()
     {
-        return new SubStatement(null, ActorFixtures::getMboxAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
+        return new SubStatement(ActorFixtures::getMboxAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
     }
 
     public static function getSubStatementWithMboxSha1SumAgent()
     {
-        return new SubStatement(null, ActorFixtures::getMboxSha1SumAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
+        return new SubStatement(ActorFixtures::getMboxSha1SumAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
     }
 
     public static function getSubStatementWithOpenIdAgent()
     {
-        return new SubStatement(null, ActorFixtures::getOpenIdAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
+        return new SubStatement(ActorFixtures::getOpenIdAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
     }
 
     public static function getSubStatementWithAccountAgent()
     {
-        return new SubStatement(null, ActorFixtures::getAccountAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
+        return new SubStatement(ActorFixtures::getAccountAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
     }
 
     public static function getSubStatementWithMboxGroup()
     {
-        return new SubStatement(null, ActorFixtures::getMboxGroup(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
+        return new SubStatement(ActorFixtures::getMboxGroup(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
     }
 
     public static function getSubStatementWithMboxSha1SumGroup()
     {
-        return new SubStatement(null, ActorFixtures::getMboxSha1SumGroup(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
+        return new SubStatement(ActorFixtures::getMboxSha1SumGroup(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
     }
 
     public static function getSubStatementWithOpenIdGroup()
     {
-        return new SubStatement(null, ActorFixtures::getOpenIdGroup(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
+        return new SubStatement(ActorFixtures::getOpenIdGroup(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
     }
 
     public static function getSubStatementWithAccountGroup()
     {
-        return new SubStatement(null, ActorFixtures::getAccountGroup(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
+        return new SubStatement(ActorFixtures::getAccountGroup(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
     }
 
     public static function getSubStatementWithIdOnlyVerb()
     {
-        return new SubStatement(null, ActorFixtures::getTypicalAgent(), VerbFixtures::getIdVerb(), ActivityFixtures::getTypicalActivity());
+        return new SubStatement(ActorFixtures::getTypicalAgent(), VerbFixtures::getIdVerb(), ActivityFixtures::getTypicalActivity());
     }
 
     public static function getSubStatementWithMboxAgentObject()
     {
-        return new SubStatement(null, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActorFixtures::getMboxAgent());
+        return new SubStatement(ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActorFixtures::getMboxAgent());
     }
 
     public static function getSubStatementWithMboxSha1SumAgentObject()
     {
-        return new SubStatement(null, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActorFixtures::getMboxSha1SumAgent());
+        return new SubStatement(ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActorFixtures::getMboxSha1SumAgent());
     }
 
     public static function getSubStatementWithOpenIdAgentObject()
     {
-        return new SubStatement(null, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActorFixtures::getOpenIdAgent());
+        return new SubStatement(ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActorFixtures::getOpenIdAgent());
     }
 
     public static function getSubStatementWithAccountAgentObject()
     {
-        return new SubStatement(null, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActorFixtures::getAccountAgent());
+        return new SubStatement(ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActorFixtures::getAccountAgent());
     }
 
     public static function getSubStatementWithMboxGroupObject()
     {
-        return new SubStatement(null, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActorFixtures::getMboxGroup());
+        return new SubStatement(ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActorFixtures::getMboxGroup());
     }
 
     public static function getSubStatementWithMboxSha1SumGroupObject()
     {
-        return new SubStatement(null, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActorFixtures::getMboxSha1SumGroup());
+        return new SubStatement(ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActorFixtures::getMboxSha1SumGroup());
     }
 
     public static function getSubStatementWithOpenIdGroupObject()
     {
-        return new SubStatement(null, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActorFixtures::getOpenIdGroup());
+        return new SubStatement(ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActorFixtures::getOpenIdGroup());
     }
 
     public static function getSubStatementWithAccountGroupObject()
     {
-        return new SubStatement(null, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActorFixtures::getAccountGroup());
+        return new SubStatement(ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActorFixtures::getAccountGroup());
     }
 
     public static function getSubStatementWithAllPropertiesAndTypicalAgentMemberGroupObject()
     {
-        return new SubStatement(null, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActorFixtures::getAllPropertiesAndTypicalAgentMemberGroup());
+        return new SubStatement(ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActorFixtures::getAllPropertiesAndTypicalAgentMemberGroup());
     }
 
     public static function getSubStatementWithAllPropertiesActivityObject()
     {
-        return new SubStatement(null, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getAllPropertiesActivity());
+        return new SubStatement(ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getAllPropertiesActivity());
     }
 
     public static function getSubStatementWithTypicalStatementReferenceObject()
     {
-        return new SubStatement(null, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), StatementReferenceFixtures::getTypicalStatementReference());
+        return new SubStatement(ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), StatementReferenceFixtures::getTypicalStatementReference());
     }
 
     public static function getAllPropertiesSubStatement()
     {
-        return new SubStatement(null, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity(), ResultFixtures::getTypicalResult(), ContextFixtures::getTypicalContext());
+        return new SubStatement(ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity(), ResultFixtures::getTypicalResult(), ContextFixtures::getTypicalContext());
     }
 }

@@ -153,7 +153,7 @@ class StatementFixtures
             'http://example.com/definition-type'
         );
         $activity = new Activity('http://example.com/website', $definition);
-        $subStatement = new SubStatement(null, $actor, $verb, $activity);
+        $subStatement = new SubStatement($actor, $verb, $activity);
 
         $actor = new Agent(InverseFunctionalIdentifier::withMbox('mailto:test@example.com'));
         $verb = new Verb('http://example.com/planned', array('en-US' => 'planned'));
