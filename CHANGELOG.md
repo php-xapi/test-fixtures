@@ -1,6 +1,10 @@
 CHANGELOG
 =========
 
+* Raised the dependency for `ramsey/uuid` from `~2.9` to `^3.0`. The `Uuid`
+  class from that package is now to be found in the `Ramsey\Uuid` namespace
+  (was `Rhumsaa\Uuid` before).
+
 * Added missing fixtures for `Account`, `Activity`, `Actor`, `Context`,
   `ContextActivities`, `Extensions`, `Result`, and `Verb`.
 
