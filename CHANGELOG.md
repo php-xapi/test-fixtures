@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+* Updated fixtures for `Statement`, `StatementReference`, and `StatementResult`
+  to use `StatementId` objects instead of string ids.
+
 * Added missing fixtures for `Account`, `Activity`, `Actor`, `Context`,
   `ContextActivities`, `Extensions`, `Result`, and `Verb`.
 

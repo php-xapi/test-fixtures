@@ -16,6 +16,7 @@ use Xabbuh\XApi\Model\Activity;
 use Xabbuh\XApi\Model\Definition;
 use Xabbuh\XApi\Model\InverseFunctionalIdentifier;
 use Xabbuh\XApi\Model\Statement;
+use Xabbuh\XApi\Model\StatementId;
 use Xabbuh\XApi\Model\StatementReference;
 use Xabbuh\XApi\Model\SubStatement;
 use Xabbuh\XApi\Model\Verb;
@@ -36,7 +37,7 @@ class StatementFixtures
             $id = UuidFixtures::getUniqueUuid();
         }
 
-        return new Statement($id, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
+        return new Statement(StatementId::fromString($id), ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity());
     }
 
     public static function getTypicalStatement($id = self::DEFAULT_STATEMENT_ID)
@@ -45,7 +46,7 @@ class StatementFixtures
             $id = UuidFixtures::getUniqueUuid();
         }
 
-        return new Statement($id, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity(), null, null, new \DateTime('2014-07-23T12:34:02-05:00'));
+        return new Statement(StatementId::fromString($id), ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity(), null, null, new \DateTime('2014-07-23T12:34:02-05:00'));
     }
 
     public static function getVoidingStatement($id = null, $voidedStatementId = 'e05aa883-acaf-40ad-bf54-02c8ce485fb0')
@@ -54,7 +55,7 @@ class StatementFixtures
             $id = UuidFixtures::getUniqueUuid();
         }
 
-        return new Statement($id, ActorFixtures::getTypicalAgent(), VerbFixtures::getVoidingVerb(), new StatementReference($voidedStatementId));
+        return new Statement(StatementId::fromString($id), ActorFixtures::getTypicalAgent(), VerbFixtures::getVoidingVerb(), new StatementReference(StatementId::fromString($voidedStatementId)));
     }
 
     /**
@@ -74,7 +75,7 @@ class StatementFixtures
         $verb = VerbFixtures::getTypicalVerb();
         $activity = ActivityFixtures::getTypicalActivity();
 
-        return new Statement($id, $group, $verb, $activity);
+        return new Statement(StatementId::fromString($id), $group, $verb, $activity);
     }
 
     /**
@@ -94,7 +95,7 @@ class StatementFixtures
         $verb = VerbFixtures::getTypicalVerb();
         $activity = ActivityFixtures::getTypicalActivity();
 
-        return new Statement($id, $group, $verb, $activity);
+        return new Statement(StatementId::fromString($id), $group, $verb, $activity);
     }
 
     /**
@@ -112,7 +113,7 @@ class StatementFixtures
             $minimalStatement->getId(),
             $minimalStatement->getActor(),
             $minimalStatement->getVerb(),
-            new StatementReference('8f87ccde-bb56-4c2e-ab83-44982ef22df0')
+            new StatementReference(StatementId::fromString('8f87ccde-bb56-4c2e-ab83-44982ef22df0'))
         );
     }
 
@@ -129,7 +130,7 @@ class StatementFixtures
             $id = UuidFixtures::getUniqueUuid();
         }
 
-        return new Statement($id, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity(), ResultFixtures::getScoreAndDurationResult());
+        return new Statement(StatementId::fromString($id), ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity(), ResultFixtures::getScoreAndDurationResult());
     }
 
     /**
@@ -158,7 +159,7 @@ class StatementFixtures
         $actor = new Agent(InverseFunctionalIdentifier::withMbox('mailto:test@example.com'));
         $verb = new Verb('http://example.com/planned', array('en-US' => 'planned'));
 
-        return new Statement($id, $actor, $verb, $subStatement);
+        return new Statement(StatementId::fromString($id), $actor, $verb, $subStatement);
     }
 
     /**
@@ -174,7 +175,7 @@ class StatementFixtures
             $id = UuidFixtures::getUniqueUuid();
         }
 
-        return new Statement($id, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity(), null, ActorFixtures::getAccountAgent());
+        return new Statement(StatementId::fromString($id), ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity(), null, ActorFixtures::getAccountAgent());
     }
 
     /**
@@ -190,7 +191,7 @@ class StatementFixtures
             $id = UuidFixtures::getUniqueUuid();
         }
 
-        return new Statement($id, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity(), null, ActorFixtures::getTypicalGroup());
+        return new Statement(StatementId::fromString($id), ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity(), null, ActorFixtures::getTypicalGroup());
     }
 
     /**

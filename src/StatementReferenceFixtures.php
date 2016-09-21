@@ -11,6 +11,7 @@
 
 namespace Xabbuh\XApi\DataFixtures;
 
+use Xabbuh\XApi\Model\StatementId;
 use Xabbuh\XApi\Model\StatementReference;
 
 /**
@@ -23,11 +24,11 @@ class StatementReferenceFixtures
 {
     public static function getTypicalStatementReference()
     {
-        return new StatementReference('16fd2706-8baf-433b-82eb-8c7fada847da');
+        return new StatementReference(StatementId::fromString('16fd2706-8baf-433b-82eb-8c7fada847da'));
     }
 
     public static function getAllPropertiesStatementReference()
     {
-        return new StatementReference('16fd2706-8baf-433b-82eb-8c7fada847da');
+        return new StatementReference(StatementId::fromString('16fd2706-8baf-433b-82eb-8c7fada847da'));
     }
 }
