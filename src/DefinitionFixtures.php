@@ -12,7 +12,16 @@
 namespace Xabbuh\XApi\DataFixtures;
 
 use Xabbuh\XApi\Model\Definition;
+use Xabbuh\XApi\Model\Interaction\ChoiceInteractionDefinition;
+use Xabbuh\XApi\Model\Interaction\LikertInteractionDefinition;
+use Xabbuh\XApi\Model\Interaction\MatchingInteractionDefinition;
+use Xabbuh\XApi\Model\Interaction\PerformanceInteractionDefinition;
+use Xabbuh\XApi\Model\Interaction\SequencingInteractionDefinition;
 use Xabbuh\XApi\Model\LanguageMap;
+use Xabbuh\XApi\Model\Interaction\FillInInteractionDefinition;
+use Xabbuh\XApi\Model\Interaction\NumericInteractionDefinition;
+use Xabbuh\XApi\Model\Interaction\OtherInteractionDefinition;
+use Xabbuh\XApi\Model\Interaction\TrueFalseInteractionDefinition;
 
 /**
  * xAPI activity definition fixtures.
@@ -60,6 +69,75 @@ class DefinitionFixtures
             'http://id.tincanapi.com/activitytype/unit-test',
             'https://github.com/adlnet/xAPI_LRS_Test'
         );
+    }
+
+    public static function getTrueFalseDefinition()
+    {
+        return new TrueFalseInteractionDefinition();
+    }
+
+    public static function getFillInDefinition()
+    {
+        return new FillInInteractionDefinition();
+    }
+
+    public static function getNumericDefinition()
+    {
+        return new NumericInteractionDefinition();
+    }
+
+    public static function getOtherDefinition()
+    {
+        return new OtherInteractionDefinition();
+    }
+
+    public static function getOtherWithCorrectResponsesPatternDefinition()
+    {
+        $otherDefinition = new OtherInteractionDefinition();
+        $otherDefinition = $otherDefinition->withCorrectResponsesPattern(array('test'));
+
+        return $otherDefinition;
+    }
+
+    public static function getChoiceDefinition()
+    {
+        $choiceDefinition = new ChoiceInteractionDefinition();
+        $choiceDefinition = $choiceDefinition->withChoices(array(InteractionComponentFixtures::getTypicalInteractionComponent()));
+
+        return $choiceDefinition;
+    }
+
+    public static function getSequencingDefinition()
+    {
+        $sequencingDefinition = new SequencingInteractionDefinition();
+        $sequencingDefinition = $sequencingDefinition->withChoices(array(InteractionComponentFixtures::getTypicalInteractionComponent()));
+
+        return $sequencingDefinition;
+    }
+
+    public static function getLikertDefinition()
+    {
+        $likertDefinition = new LikertInteractionDefinition();
+        $likertDefinition = $likertDefinition->withScale(array(InteractionComponentFixtures::getTypicalInteractionComponent()));
+
+        return $likertDefinition;
+    }
+
+    public static function getMatchingDefinition()
+    {
+        $matchingDefinition = new MatchingInteractionDefinition();
+        $matchingDefinition = $matchingDefinition->withSource(array(InteractionComponentFixtures::getTypicalInteractionComponent()));
+        $matchingDefinition = $matchingDefinition->withTarget(array(InteractionComponentFixtures::getTypicalInteractionComponent()));
+
+        return $matchingDefinition;
+    }
+
+    public static function getPerformanceDefinition()
+    {
+        $performanceDefinition = new PerformanceInteractionDefinition();
+        $performanceDefinition = $performanceDefinition->withSteps(array(InteractionComponentFixtures::getTypicalInteractionComponent()));
+
+        return $performanceDefinition;
     }
 
     public static function getForQueryDefinition()

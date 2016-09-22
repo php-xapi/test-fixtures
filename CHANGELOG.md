@@ -1,6 +1,8 @@
 CHANGELOG
 =========
 
+* Added fixtures for activity interaction definitions and interaction components.
+
 * Updated fixtures for `Definition`, `Statement`, `StatementResult`, and
   `Verb` to use `LanguageMap` instances instead of plain old PHP arrays.
 
