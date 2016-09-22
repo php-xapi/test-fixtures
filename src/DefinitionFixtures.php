@@ -12,6 +12,7 @@
 namespace Xabbuh\XApi\DataFixtures;
 
 use Xabbuh\XApi\Model\Definition;
+use Xabbuh\XApi\Model\LanguageMap;
 
 /**
  * xAPI activity definition fixtures.
@@ -33,12 +34,12 @@ class DefinitionFixtures
 
     public static function getNameDefinition()
     {
-        return new Definition(array('en-US' => 'test'));
+        return new Definition(LanguageMap::create(array('en-US' => 'test')));
     }
 
     public static function getDescriptionDefinition()
     {
-        return new Definition(null, array('en-US' => 'test'));
+        return new Definition(null, LanguageMap::create(array('en-US' => 'test')));
     }
 
     public static function getTypeDefinition()
@@ -54,8 +55,8 @@ class DefinitionFixtures
     public static function getAllPropertiesDefinition()
     {
         return new Definition(
-            array('en-US' => 'test'),
-            array('en-US' => 'test'),
+            LanguageMap::create(array('en-US' => 'test')),
+            LanguageMap::create(array('en-US' => 'test')),
             'http://id.tincanapi.com/activitytype/unit-test',
             'https://github.com/adlnet/xAPI_LRS_Test'
         );
@@ -63,6 +64,6 @@ class DefinitionFixtures
 
     public static function getForQueryDefinition()
     {
-        return new Definition(array('en-US' => 'for query'));
+        return new Definition(LanguageMap::create(array('en-US' => 'for query')));
     }
 }

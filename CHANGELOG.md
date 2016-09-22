@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+* Updated fixtures for `Definition`, `Statement`, `StatementResult`, and
+  `Verb` to use `LanguageMap` instances instead of plain old PHP arrays.
+
 * Updated fixtures for `Statement`, `StatementReference`, and `StatementResult`
   to use `StatementId` objects instead of string ids.
 

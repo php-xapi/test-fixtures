@@ -13,6 +13,7 @@ namespace Xabbuh\XApi\DataFixtures;
 
 use Xabbuh\XApi\Model\Agent;
 use Xabbuh\XApi\Model\InverseFunctionalIdentifier;
+use Xabbuh\XApi\Model\LanguageMap;
 use Xabbuh\XApi\Model\Statement;
 use Xabbuh\XApi\Model\StatementId;
 use Xabbuh\XApi\Model\StatementResult;
@@ -36,7 +37,7 @@ class StatementResultFixtures
     {
         $statement1 = StatementFixtures::getMinimalStatement();
 
-        $verb = new Verb('http://adlnet.gov/expapi/verbs/deleted', array('en-US' => 'deleted'));
+        $verb = new Verb('http://adlnet.gov/expapi/verbs/deleted', LanguageMap::create(array('en-US' => 'deleted')));
         $statement2 = new Statement(
             StatementId::fromString('12345678-1234-5678-8234-567812345679'),
             new Agent(InverseFunctionalIdentifier::withMbox('mailto:bob@example.com')),
