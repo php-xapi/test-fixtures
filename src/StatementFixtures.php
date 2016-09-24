@@ -59,6 +59,11 @@ class StatementFixtures
         return new Statement(StatementId::fromString($id), ActorFixtures::getTypicalAgent(), VerbFixtures::getVoidingVerb(), new StatementReference(StatementId::fromString($voidedStatementId)));
     }
 
+    public static function getAttachmentStatement()
+    {
+        return new Statement(null, ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity(), null, null, null, null, null, array(AttachmentFixtures::getTextAttachment()));
+    }
+
     /**
      * Loads a statement with a group as an actor.
      *
