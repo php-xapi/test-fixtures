@@ -12,6 +12,7 @@
 namespace Xabbuh\XApi\DataFixtures;
 
 use Xabbuh\XApi\Model\Definition;
+use Xabbuh\XApi\Model\Extensions;
 use Xabbuh\XApi\Model\Interaction\ChoiceInteractionDefinition;
 use Xabbuh\XApi\Model\Interaction\LikertInteractionDefinition;
 use Xabbuh\XApi\Model\Interaction\MatchingInteractionDefinition;
@@ -61,13 +62,30 @@ class DefinitionFixtures
         return new Definition(null, null, null, 'https://github.com/adlnet/xAPI_LRS_Test');
     }
 
+    public static function getExtensionsDefinition()
+    {
+        $definition = new Definition();
+        $definition = $definition->withExtensions(ExtensionsFixtures::getMultiplePairsExtensions());
+
+        return $definition;
+    }
+
+    public static function getEmptyExtensionsDefinition()
+    {
+        $definition = new Definition();
+        $definition = $definition->withExtensions(ExtensionsFixtures::getEmptyExtensions());
+
+        return $definition;
+    }
+
     public static function getAllPropertiesDefinition()
     {
         return new Definition(
             LanguageMap::create(array('en-US' => 'test')),
             LanguageMap::create(array('en-US' => 'test')),
             'http://id.tincanapi.com/activitytype/unit-test',
-            'https://github.com/adlnet/xAPI_LRS_Test'
+            'https://github.com/adlnet/xAPI_LRS_Test',
+            ExtensionsFixtures::getTypicalExtensions()
         );
     }
 
