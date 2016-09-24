@@ -200,6 +200,26 @@ class StatementFixtures
         return new Statement(StatementId::fromString($id), ActorFixtures::getTypicalAgent(), VerbFixtures::getTypicalVerb(), ActivityFixtures::getTypicalActivity(), null, ActorFixtures::getTypicalGroup());
     }
 
+    public static function getAllPropertiesStatement($id = self::DEFAULT_STATEMENT_ID)
+    {
+        if (null === $id) {
+            $id = UuidFixtures::getUniqueUuid();
+        }
+
+        return new Statement(
+            StatementId::fromString($id),
+            ActorFixtures::getTypicalAgent(),
+            VerbFixtures::getTypicalVerb(),
+            ActivityFixtures::getTypicalActivity(),
+            ResultFixtures::getAllPropertiesResult(),
+            ActorFixtures::getAccountAgent(),
+            new \DateTime('2013-05-18T05:32:34+00:00'),
+            new \DateTime('2014-07-23T12:34:02-05:00'),
+            ContextFixtures::getAllPropertiesContext(),
+            array(AttachmentFixtures::getTextAttachment())
+        );
+    }
+
     /**
      * @return Statement[]
      */
