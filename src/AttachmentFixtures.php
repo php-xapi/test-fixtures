@@ -12,6 +12,8 @@
 namespace Xabbuh\XApi\DataFixtures;
 
 use Xabbuh\XApi\Model\Attachment;
+use Xabbuh\XApi\Model\IRI;
+use Xabbuh\XApi\Model\IRL;
 use Xabbuh\XApi\Model\LanguageMap;
 
 /**
@@ -25,7 +27,7 @@ class AttachmentFixtures
     public static function getTextAttachment()
     {
         return new Attachment(
-            'http://id.tincanapi.com/attachment/supporting_media',
+            IRI::fromString('http://id.tincanapi.com/attachment/supporting_media'),
             'text/plain',
             18,
             'bd1a58265d96a3d1981710dab8b1e1ed04a8d7557ea53ab0cf7b44c04fd01545',
@@ -36,7 +38,7 @@ class AttachmentFixtures
     public static function getJSONAttachment()
     {
         return new Attachment(
-            'http://id.tincanapi.com/attachment/supporting_media',
+            IRI::fromString('http://id.tincanapi.com/attachment/supporting_media'),
             'application/json',
             60,
             'f4135c31e2710764604195dfe4e225884d8108467cc21670803e384b80df88ee',
@@ -47,13 +49,13 @@ class AttachmentFixtures
     public static function getFileUrlOnlyAttachment()
     {
         return new Attachment(
-            'http://id.tincanapi.com/attachment/supporting_media',
+            IRI::fromString('http://id.tincanapi.com/attachment/supporting_media'),
             'application/octet-stream',
             65556,
             'd14f1580a2cebb6f8d4a8a2fc0d13c67f970e84f8d15677a93ae95c9080df899',
             LanguageMap::create(array('en-US' => 'FileUrl Only attachment')),
             null,
-            'http://tincanapi.com/conformancetest/attachment/fileUrlOnly'
+            IRL::fromString('http://tincanapi.com/conformancetest/attachment/fileUrlOnly')
         );
     }
 }

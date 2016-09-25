@@ -12,6 +12,7 @@
 namespace Xabbuh\XApi\DataFixtures;
 
 use Xabbuh\XApi\Model\Account;
+use Xabbuh\XApi\Model\IRL;
 
 /**
  * xAPI account fixtures.
@@ -23,21 +24,21 @@ class AccountFixtures
 {
     public static function getTypicalAccount()
     {
-        return new Account('test', 'https://tincanapi.com');
+        return new Account('test', IRL::fromString('https://tincanapi.com'));
     }
 
     public static function getConsumerAccount()
     {
-        return new Account('oauth_consumer_x75db', 'https://tincanapi.com/OAuth/Token');
+        return new Account('oauth_consumer_x75db', IRL::fromString('https://tincanapi.com/OAuth/Token'));
     }
 
     public static function getAllPropertiesAccount()
     {
-        return new Account('test', 'https://tincanapi.com');
+        return new Account('test', IRL::fromString('https://tincanapi.com'));
     }
 
     public static function getForQueryAccount()
     {
-        return new Account('forQuery', 'https://tincanapi.com');
+        return new Account('forQuery', IRL::fromString('https://tincanapi.com'));
     }
 }

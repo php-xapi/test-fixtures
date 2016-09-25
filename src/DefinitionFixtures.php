@@ -18,6 +18,8 @@ use Xabbuh\XApi\Model\Interaction\LikertInteractionDefinition;
 use Xabbuh\XApi\Model\Interaction\MatchingInteractionDefinition;
 use Xabbuh\XApi\Model\Interaction\PerformanceInteractionDefinition;
 use Xabbuh\XApi\Model\Interaction\SequencingInteractionDefinition;
+use Xabbuh\XApi\Model\IRI;
+use Xabbuh\XApi\Model\IRL;
 use Xabbuh\XApi\Model\LanguageMap;
 use Xabbuh\XApi\Model\Interaction\FillInInteractionDefinition;
 use Xabbuh\XApi\Model\Interaction\NumericInteractionDefinition;
@@ -54,12 +56,12 @@ class DefinitionFixtures
 
     public static function getTypeDefinition()
     {
-        return new Definition(null, null, 'http://id.tincanapi.com/activitytype/unit-test');
+        return new Definition(null, null, IRI::fromString('http://id.tincanapi.com/activitytype/unit-test'));
     }
 
     public static function getMoreInfoDefinition()
     {
-        return new Definition(null, null, null, 'https://github.com/adlnet/xAPI_LRS_Test');
+        return new Definition(null, null, null, IRL::fromString('https://github.com/adlnet/xAPI_LRS_Test'));
     }
 
     public static function getExtensionsDefinition()
@@ -83,8 +85,8 @@ class DefinitionFixtures
         return new Definition(
             LanguageMap::create(array('en-US' => 'test')),
             LanguageMap::create(array('en-US' => 'test')),
-            'http://id.tincanapi.com/activitytype/unit-test',
-            'https://github.com/adlnet/xAPI_LRS_Test',
+            IRI::fromString('http://id.tincanapi.com/activitytype/unit-test'),
+            IRL::fromString('https://github.com/adlnet/xAPI_LRS_Test'),
             ExtensionsFixtures::getTypicalExtensions()
         );
     }

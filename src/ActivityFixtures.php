@@ -12,6 +12,7 @@
 namespace Xabbuh\XApi\DataFixtures;
 
 use Xabbuh\XApi\Model\Activity;
+use Xabbuh\XApi\Model\IRI;
 
 /**
  * xAPI statement activity fixtures.
@@ -23,26 +24,26 @@ class ActivityFixtures
 {
     public static function getTypicalActivity()
     {
-        return new Activity('http://tincanapi.com/conformancetest/activityid');
+        return new Activity(IRI::fromString('http://tincanapi.com/conformancetest/activityid'));
     }
 
     public static function getIdActivity()
     {
-        return new Activity('http://tincanapi.com/conformancetest/activityid');
+        return new Activity(IRI::fromString('http://tincanapi.com/conformancetest/activityid'));
     }
 
     public static function getIdAndDefinitionActivity()
     {
-        return new Activity('http://tincanapi.com/conformancetest/activityid', DefinitionFixtures::getTypicalDefinition());
+        return new Activity(IRI::fromString('http://tincanapi.com/conformancetest/activityid'), DefinitionFixtures::getTypicalDefinition());
     }
 
     public static function getAllPropertiesActivity()
     {
-        return new Activity('http://tincanapi.com/conformancetest/activityid', DefinitionFixtures::getTypicalDefinition());
+        return new Activity(IRI::fromString('http://tincanapi.com/conformancetest/activityid'), DefinitionFixtures::getTypicalDefinition());
     }
 
     public static function getForQueryActivity()
     {
-        return new Activity('http://tincanapi.com/conformancetest/activityid/forQuery', DefinitionFixtures::getForQueryDefinition());
+        return new Activity(IRI::fromString('http://tincanapi.com/conformancetest/activityid/forQuery'), DefinitionFixtures::getForQueryDefinition());
     }
 }

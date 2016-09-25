@@ -15,6 +15,7 @@ use Xabbuh\XApi\Model\Agent;
 use Xabbuh\XApi\Model\Activity;
 use Xabbuh\XApi\Model\Definition;
 use Xabbuh\XApi\Model\InverseFunctionalIdentifier;
+use Xabbuh\XApi\Model\IRI;
 use Xabbuh\XApi\Model\LanguageMap;
 use Xabbuh\XApi\Model\Statement;
 use Xabbuh\XApi\Model\StatementId;
@@ -152,18 +153,18 @@ class StatementFixtures
             $id = UuidFixtures::getUniqueUuid();
         }
 
-        $actor = new Agent(InverseFunctionalIdentifier::withMbox('mailto:test@example.com'));
-        $verb = new Verb('http://example.com/visited', LanguageMap::create(array('en-US' => 'will visit')));
+        $actor = new Agent(InverseFunctionalIdentifier::withMbox(IRI::fromString('mailto:test@example.com')));
+        $verb = new Verb(IRI::fromString('http://example.com/visited'), LanguageMap::create(array('en-US' => 'will visit')));
         $definition = new Definition(
             LanguageMap::create(array('en-US' => 'Some Awesome Website')),
             LanguageMap::create(array('en-US' => 'The visited website')),
-            'http://example.com/definition-type'
+            IRI::fromString('http://example.com/definition-type')
         );
-        $activity = new Activity('http://example.com/website', $definition);
+        $activity = new Activity(IRI::fromString('http://example.com/website'), $definition);
         $subStatement = new SubStatement($actor, $verb, $activity);
 
-        $actor = new Agent(InverseFunctionalIdentifier::withMbox('mailto:test@example.com'));
-        $verb = new Verb('http://example.com/planned', LanguageMap::create(array('en-US' => 'planned')));
+        $actor = new Agent(InverseFunctionalIdentifier::withMbox(IRI::fromString('mailto:test@example.com')));
+        $verb = new Verb(IRI::fromString('http://example.com/planned'), LanguageMap::create(array('en-US' => 'planned')));
 
         return new Statement(StatementId::fromString($id), $actor, $verb, $subStatement);
     }

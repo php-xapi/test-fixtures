@@ -19,6 +19,7 @@ use Xabbuh\XApi\Model\AgentProfile;
 use Xabbuh\XApi\Model\AgentProfileDocument;
 use Xabbuh\XApi\Model\DocumentData;
 use Xabbuh\XApi\Model\InverseFunctionalIdentifier;
+use Xabbuh\XApi\Model\IRI;
 use Xabbuh\XApi\Model\State;
 use Xabbuh\XApi\Model\StateDocument;
 
@@ -63,7 +64,7 @@ class DocumentFixtures
             $documentData = static::getDocumentData();
         }
 
-        $activityProfile = new ActivityProfile('profile-id', new Activity('activity-id'));
+        $activityProfile = new ActivityProfile('profile-id', new Activity(IRI::fromString('activity-id')));
 
         return new ActivityProfileDocument($activityProfile, $documentData);
     }
@@ -82,7 +83,7 @@ class DocumentFixtures
             $documentData = static::getDocumentData();
         }
 
-        return new AgentProfileDocument(new AgentProfile('profile-id', new Agent(InverseFunctionalIdentifier::withMbox('mailto:christian@example.com'))), $documentData);
+        return new AgentProfileDocument(new AgentProfile('profile-id', new Agent(InverseFunctionalIdentifier::withMbox(IRI::fromString('mailto:christian@example.com')))), $documentData);
     }
 
     /**
@@ -99,8 +100,8 @@ class DocumentFixtures
             $documentData = static::getDocumentData();
         }
 
-        $agent = new Agent(InverseFunctionalIdentifier::withMbox('mailto:alice@example.com'));
-        $activity = new Activity('activity-id');
+        $agent = new Agent(InverseFunctionalIdentifier::withMbox(IRI::fromString('mailto:alice@example.com')));
+        $activity = new Activity(IRI::fromString('activity-id'));
 
         return new StateDocument(new State($activity, $agent, 'state-id'), $documentData);
     }

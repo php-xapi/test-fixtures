@@ -11,6 +11,7 @@
 
 namespace Xabbuh\XApi\DataFixtures;
 
+use Xabbuh\XApi\Model\IRI;
 use Xabbuh\XApi\Model\LanguageMap;
 use Xabbuh\XApi\Model\Verb;
 
@@ -24,26 +25,26 @@ class VerbFixtures
 {
     public static function getTypicalVerb()
     {
-        return new Verb('http://tincanapi.com/conformancetest/verbid', LanguageMap::create(array('en-US' => 'test')));
+        return new Verb(IRI::fromString('http://tincanapi.com/conformancetest/verbid'), LanguageMap::create(array('en-US' => 'test')));
     }
 
     public static function getVoidingVerb()
     {
-        return new Verb('http://adlnet.gov/expapi/verbs/voided', LanguageMap::create(array('en-US' => 'voided')));
+        return new Verb(IRI::fromString('http://adlnet.gov/expapi/verbs/voided'), LanguageMap::create(array('en-US' => 'voided')));
     }
 
     public static function getIdVerb()
     {
-        return new Verb('http://tincanapi.com/conformancetest/verbid');
+        return new Verb(IRI::fromString('http://tincanapi.com/conformancetest/verbid'));
     }
 
     public static function getIdAndDisplayVerb()
     {
-        return new Verb('http://tincanapi.com/conformancetest/verbid', LanguageMap::create(array('en-US' => 'test')));
+        return new Verb(IRI::fromString('http://tincanapi.com/conformancetest/verbid'), LanguageMap::create(array('en-US' => 'test')));
     }
 
     public static function getForQueryVerb()
     {
-        return new Verb('http://tincanapi.com/conformancetest/verbid/forQuery', LanguageMap::create(array('en-US' => 'for query')));
+        return new Verb(IRI::fromString('http://tincanapi.com/conformancetest/verbid/forQuery'), LanguageMap::create(array('en-US' => 'for query')));
     }
 }

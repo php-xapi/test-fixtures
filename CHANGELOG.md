@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+* Updated fixtures to use `IRI` and `IRL` instances where they have been
+  introduced in the `php-xapi/model` package.
+
 * Added a `Statement` fixture defining all properties of a statement.
 
 * Added fixtures for statement attachments.

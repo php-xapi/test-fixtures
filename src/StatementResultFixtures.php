@@ -13,6 +13,8 @@ namespace Xabbuh\XApi\DataFixtures;
 
 use Xabbuh\XApi\Model\Agent;
 use Xabbuh\XApi\Model\InverseFunctionalIdentifier;
+use Xabbuh\XApi\Model\IRI;
+use Xabbuh\XApi\Model\IRL;
 use Xabbuh\XApi\Model\LanguageMap;
 use Xabbuh\XApi\Model\Statement;
 use Xabbuh\XApi\Model\StatementId;
@@ -29,18 +31,18 @@ class StatementResultFixtures
     /**
      * Loads a statement result.
      *
-     * @param string $urlPath An optional URL path refering to more results
+     * @param IRL $urlPath An optional URL path refering to more results
      *
      * @return StatementResult
      */
-    public static function getStatementResult($urlPath = null)
+    public static function getStatementResult(IRL $urlPath = null)
     {
         $statement1 = StatementFixtures::getMinimalStatement();
 
-        $verb = new Verb('http://adlnet.gov/expapi/verbs/deleted', LanguageMap::create(array('en-US' => 'deleted')));
+        $verb = new Verb(IRI::fromString('http://adlnet.gov/expapi/verbs/deleted'), LanguageMap::create(array('en-US' => 'deleted')));
         $statement2 = new Statement(
             StatementId::fromString('12345678-1234-5678-8234-567812345679'),
-            new Agent(InverseFunctionalIdentifier::withMbox('mailto:bob@example.com')),
+            new Agent(InverseFunctionalIdentifier::withMbox(IRI::fromString('mailto:bob@example.com'))),
             $verb,
             $statement1->getObject()
         );
@@ -57,7 +59,7 @@ class StatementResultFixtures
      */
     public static function getStatementResultWithMore()
     {
-        $statementResult = static::getStatementResult('/xapi/statements/more/b381d8eca64a61a42c7b9b4ecc2fabb6');
+        $statementResult = static::getStatementResult(IRL::fromString('/xapi/statements/more/b381d8eca64a61a42c7b9b4ecc2fabb6'));
 
         return $statementResult;
     }

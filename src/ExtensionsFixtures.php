@@ -3,6 +3,7 @@
 namespace Xabbuh\XApi\DataFixtures;
 
 use Xabbuh\XApi\Model\Extensions;
+use Xabbuh\XApi\Model\IRI;
 
 /**
  * xAPI statement extensions fixtures.
@@ -14,42 +15,46 @@ class ExtensionsFixtures
 {
     public static function getEmptyExtensions()
     {
-        return new Extensions(array());
+        return new Extensions();
     }
 
     public static function getTypicalExtensions()
     {
-        return new Extensions(array('http://id.tincanapi.com/extension/topic' => 'Conformance Testing'));
+        $extensions = new \SplObjectStorage();
+        $extensions->attach(IRI::fromString('http://id.tincanapi.com/extension/topic'), 'Conformance Testing');
+
+        return new Extensions($extensions);
     }
 
     public static function getWithObjectValueExtensions()
     {
-        $color = new \stdClass();
-        $color->model = 'RGB';
-        $color->value = '#FFFFFF';
+        $extensions = new \SplObjectStorage();
+        $extensions->attach(IRI::fromString('http://id.tincanapi.com/extension/color'), array(
+            'model' => 'RGB',
+            'value' => '#FFFFFF',
+        ));
 
-        return new Extensions(array('http://id.tincanapi.com/extension/color' => $color));
+        return new Extensions($extensions);
     }
 
     public static function getWithIntegerValueExtensions()
     {
-        return new Extensions(array('http://id.tincanapi.com/extension/starting-position' => 1));
+        $extensions = new \SplObjectStorage();
+        $extensions->attach(IRI::fromString('http://id.tincanapi.com/extension/starting-position'), 1);
+
+        return new Extensions($extensions);
     }
 
     public static function getMultiplePairsExtensions()
     {
-        return new Extensions(array(
-            'http://id.tincanapi.com/extension/topic' => 'Conformance Testing',
-            'http://id.tincanapi.com/extension/color' => array(
-                'model' => 'RGB',
-                'value' => '#FFFFFF',
-            ),
-            'http://id.tincanapi.com/extension/starting-position' => 1,
+        $extensions = new \SplObjectStorage();
+        $extensions->attach(IRI::fromString('http://id.tincanapi.com/extension/topic'), 'Conformance Testing');
+        $extensions->attach(IRI::fromString('http://id.tincanapi.com/extension/color'), array(
+            'model' => 'RGB',
+            'value' => '#FFFFFF',
         ));
-    }
+        $extensions->attach(IRI::fromString('http://id.tincanapi.com/extension/starting-position'), 1);
 
-    public static function getInvalidNonIriExtensions()
-    {
-        return new Extensions(array('test' => 'key not an IRI'));
+        return new Extensions($extensions);
     }
 }
