@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+0.5.0
+-----
+
 * Updated fixtures to use `IRI` and `IRL` instances where they have been
   introduced in the `php-xapi/model` package.
 
