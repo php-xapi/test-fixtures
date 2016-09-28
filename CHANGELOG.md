@@ -9,8 +9,9 @@ provided by the maintainers of the xAPI spec as instances of the class offered
 by the `php-xapi/model`  package and provides ways to access them through
 a PHP API.
 
-This release is equivalent to the 0.5 release series and is considered to
-be stable.
+This release is equivalent to the 0.5 release series (except for the version
+of the required `php-xapi/model` package being 1.x now) and is considered
+to be stable.
 
 0.5.0
 -----
