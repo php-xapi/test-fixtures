@@ -1,6 +1,17 @@
 CHANGELOG
 =========
 
+1.0.0
+-----
+
+This first stable release contains all the official conformance test fixtures
+provided by the maintainers of the xAPI spec as instances of the class offered
+by the `php-xapi/model`  package and provides ways to access them through
+a PHP API.
+
+This release is equivalent to the 0.5 release series and is considered to
+be stable.
+
 0.5.0
 -----
 
