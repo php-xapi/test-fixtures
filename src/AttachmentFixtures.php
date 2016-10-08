@@ -31,7 +31,10 @@ class AttachmentFixtures
             'text/plain',
             18,
             'bd1a58265d96a3d1981710dab8b1e1ed04a8d7557ea53ab0cf7b44c04fd01545',
-            LanguageMap::create(array('en-US' => 'Text attachment'))
+            LanguageMap::create(array('en-US' => 'Text attachment')),
+            null,
+            null,
+            'some text content'
         );
     }
 
@@ -42,7 +45,10 @@ class AttachmentFixtures
             'application/json',
             60,
             'f4135c31e2710764604195dfe4e225884d8108467cc21670803e384b80df88ee',
-            LanguageMap::create(array('en-US' => 'JSON attachment'))
+            LanguageMap::create(array('en-US' => 'JSON attachment')),
+            null,
+            null,
+            '{"propertyA":"value1","propertyB":"value2","propertyC":true}'
         );
     }
 
