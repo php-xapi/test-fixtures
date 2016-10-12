@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+1.0.1
+-----
+
+Raw content data has been added to the "text attachment" and "JSON attachment"
+fixtures.
+
 1.0.0
 -----
 
