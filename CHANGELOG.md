@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+1.1.0
+-----
+
+* allow `2.x` releases of the `php-xapi/model` package too
+
 1.0.1
 -----
 
