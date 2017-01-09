@@ -11,7 +11,8 @@
 
 namespace Xabbuh\XApi\DataFixtures;
 
-use Rhumsaa\Uuid\Uuid;
+use Ramsey\Uuid\Uuid as RamseyUuid;
+use Rhumsaa\Uuid\Uuid as RhumsaaUuid;
 
 /**
  * xAPI UUID fixtures.
@@ -33,6 +34,10 @@ class UuidFixtures
 
     public static function getUniqueUuid()
     {
-        return (string) Uuid::uuid4();
+        if (class_exists('Rhumsaa\Uuid\Uuid')) {
+            return (string) RhumsaaUuid::uuid4();
+        }
+
+        return (string) RamseyUuid::uuid4();
     }
 }
