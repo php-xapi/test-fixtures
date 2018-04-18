@@ -16,7 +16,6 @@
         "php-xapi/model": "^1.1 || ^2.0 || ^3.0",
         "ramsey/uuid": "^2.9 || ^3.0"
     },
-    "minimum-stability": "dev",
     "conflict": {
         "xabbuh/xapi-data-fixtures": "*"
     },
