@@ -106,6 +106,25 @@ class StatementFixtures
     }
 
     /**
+     * Loads a statement including an activity.
+     *
+     * @param string $id The id of the new Statement
+     *
+     * @return Statement
+     */
+    public static function getStatementWithActivity($id = self::DEFAULT_STATEMENT_ID)
+    {
+        $minimalStatement = static::getMinimalStatement($id);
+
+        return new Statement(
+            $minimalStatement->getId(),
+            $minimalStatement->getActor(),
+            $minimalStatement->getVerb(),
+            ActivityFixtures::getActivity()
+        );
+    }
+
+    /**
      * Loads a statement including a reference to another statement.
      *
      * @param string $id The id of the new Statement
